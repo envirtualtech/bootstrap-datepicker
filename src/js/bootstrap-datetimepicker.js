@@ -172,6 +172,8 @@ THE SOFTWARE.
             picker.viewMode = Math.max(picker.viewMode, picker.minViewMode);
 
             picker.options.disabledDates = indexGivenDates(picker.options.disabledDates);
+            picker.options.warningDates = indexGivenDates(picker.options.warningDates);
+            picker.options.errorDates = indexGivenDates(picker.options.errorDates);
             picker.options.enabledDates = indexGivenDates(picker.options.enabledDates);
 
             picker.startViewMode = picker.viewMode;
@@ -264,6 +266,12 @@ THE SOFTWARE.
             }
             if (eData.dateDisableddates !== undefined) {
                 picker.options.disabledDates = eData.dateDisableddates;
+            }
+            if (eData.dateWarningdates !== undefined) {
+                picker.options.warningDates = eData.dateWarningdates;
+            }
+            if (eData.dateErrordates !== undefined) {
+                picker.options.errorDates = eData.dateErrordates;
             }
             if (eData.dateEnableddates !== undefined) {
                 picker.options.enabledDates = eData.dateEnableddates;
@@ -479,6 +487,12 @@ THE SOFTWARE.
                 }
                 if (isInDisableDates(prevMonth, 'day') || !isInEnableDates(prevMonth)) {
                     clsName += ' disabled';
+                }
+                if (isInWarningDates(prevMonth, 'day')) {
+                    clsName += ' warning';
+                }
+                if (isInErrorDates(prevMonth, 'day')) {
+                    clsName += ' error';
                 }
                 if (picker.options.showToday === true) {
                     if (prevMonth.isSame(moment(), 'day')) {
@@ -1010,6 +1024,18 @@ THE SOFTWARE.
             }
             return picker.options.disabledDates[date.format('YYYY-MM-DD')] === true;
         },
+        isInWarningDates = function(date) {
+            if (picker.options.warningDates === false) {
+                return false;
+            }
+            return picker.options.warningDates[date.format('YYYY-MM-DD')] === true;
+        },
+        isInErrorDates = function(date) {
+            if (picker.options.errorDates === false) {
+                return false;
+            }
+            return picker.options.errorDates[date.format('YYYY-MM-DD')] === true;
+        },
         isInEnableDates = function (date) {
             moment.locale(picker.options.language);
             if (picker.options.enabledDates === false) {
@@ -1373,6 +1399,8 @@ THE SOFTWARE.
         language: moment.locale(),
         defaultDate: '',
         disabledDates: false,
+        warningDates: false,
+        errorDates: false,
         enabledDates: false,
         icons: {},
         useStrict: false,
