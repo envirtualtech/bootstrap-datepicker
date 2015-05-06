@@ -1024,13 +1024,13 @@ THE SOFTWARE.
             }
             return picker.options.disabledDates[date.format('YYYY-MM-DD')] === true;
         },
-        isInWarningDates = function(date) {
+        isInWarningDates = function (date) {
             if (picker.options.warningDates === false) {
                 return false;
             }
             return picker.options.warningDates[date.format('YYYY-MM-DD')] === true;
         },
-        isInErrorDates = function(date) {
+        isInErrorDates = function (date) {
             if (picker.options.errorDates === false) {
                 return false;
             }
