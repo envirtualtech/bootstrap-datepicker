@@ -179,6 +179,42 @@
             }
         }
 
+        &.warning {
+            position: relative;
+
+            &:before {
+                font-family: 'FontAwesome';
+                content: "\f071";
+                position: absolute;
+                color: orange;
+                font-size: 10px;
+                top: 0;
+                left: 0;
+                margin-top: -5px;
+            }
+        }
+
+        &.error {
+            position: relative;
+
+            &:before {
+                margin-top: -5px;
+                font-family: 'FontAwesome';
+                content: "\f00d";
+                position: absolute;
+                color: red;
+                font-size: 10px;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        td.day.error {
+            position: relative;
+        }
+
+
+
         &.active,
         &.active:hover {
             background-color: @btn-primary-bg;
