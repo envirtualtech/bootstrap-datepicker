@@ -1335,6 +1335,20 @@ THE SOFTWARE.
             }
         };
 
+        picker.setWarningDates = function (dates) {
+            picker.options.warningDates = indexGivenDates(dates);
+            if (picker.viewDate) {
+                update();
+            }
+        };
+
+        picker.setErrorDates = function (dates) {
+            picker.options.errorDates = indexGivenDates(dates);
+            if (picker.viewDate) {
+                update();
+            }
+        };
+
         picker.setEnabledDates = function (dates) {
             picker.options.enabledDates = indexGivenDates(dates);
             if (picker.viewDate) {
